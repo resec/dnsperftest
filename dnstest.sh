@@ -41,7 +41,7 @@ for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
 #    printf "%-8s" "test$totaldomains"
 done
-printf "Max" "Min" "Average"
+printf "Max Min Average"
 echo ""
 
 
@@ -63,11 +63,11 @@ for p in $PROVIDERS; do
 	fi
 	
 	if (( ttime > max )); then
-		max=ttime
+		max=$ttime
 	fi
 	
 	if (( ttime < min )); then
-		min=ttime
+		min=$ttime
 	fi
 	
         #printf "%-8s" "$ttime ms"
