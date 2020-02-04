@@ -56,7 +56,7 @@ for p in $PROVIDERS; do
     min=99999
 
     printf "%-12s" "$pname"
-    for (( COUNTER=0; COUNTER<=100; COUNTER+=1 )); do
+    for (( COUNTER=0; COUNTER<=30; COUNTER+=1 )); do
 	    for d in $DOMAINS2TEST; do
 		ttime=`$dig +tries=1 +time=2 +stats @$pip $d |grep "Query time:" | cut -d : -f 2- | cut -d " " -f 2`
 		if [ -z "$ttime" ]; then
