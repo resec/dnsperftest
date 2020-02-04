@@ -20,6 +20,8 @@ PROVIDERS="
 176.103.130.132#adguard 
 156.154.70.3#neustar 
 8.26.56.26#comodo
+10.100.0.100#unbound
+10.100.0.10#coredns
 "
 
 # Domains to test. Duplicated domains are ok
