@@ -77,7 +77,8 @@ for p in $PROVIDERS; do
 		ftime=$((ftime + ttime))
 	    done
     done
-    avg=`bc -lq <<< "scale=2; $ftime/$totaldomains"`
+    totalcount=$((COUNTER * totaldomains))
+    avg=`bc -lq <<< "scale=2; $ftime/$totalcount"`
 
     echo "$max.00 $min.00 $avg (ms)"
 done
