@@ -15,23 +15,23 @@ PROVIDERS="
 # Domains to test. Duplicated domains are ok
 DOMAINS2TEST="
 routing-service.ems-router.svc.cluster.local
-user-service.ems-shard%04d.svc.cluster.local
-message-service.ems-shard%04d.svc.cluster.local
-email-storage-service.ems-shard%04d.svc.cluster.local
-label-service.ems-shard%04d.svc.cluster.local
-transfer-service.ems-shard%04d.svc.cluster.local
-search-service.ems-shard%04d.svc.cluster.local
-spam-filter-service.ems-shard%04d.svc.cluster.local
-api-service.ems-shard%04d.svc.cluster.local
-category-service.ems-shard%04d.svc.cluster.local
+user-service.ems-shard0000.svc.cluster.local
+message-service.ems-shard0000.svc.cluster.local
+email-storage-service.ems-shard0000.svc.cluster.local
+label-service.ems-shard0000.svc.cluster.local
+transfer-service.ems-shard0000.svc.cluster.local
+search-service.ems-shard0000.svc.cluster.local
+spam-filter-service.ems-shard0000.svc.cluster.local
+api-service.ems-shard0000.svc.cluster.local
+category-service.ems-shard0000.svc.cluster.local
 routing-service.ems-router.svc.cluster.local
-history-service.ems-shard%04d.svc.cluster.local
-filter-service.ems-shard%04d.svc.cluster.local
-index-service.ems-shard%04d.svc.cluster.local
+history-service.ems-shard0000.svc.cluster.local
+filter-service.ems-shard0000.svc.cluster.local
+index-service.ems-shard0000.svc.cluster.local
 nginx-api-service.ems-router.svc.cluster.local
-lmtp-service.ems-shard%04d.svc.cluster.local
+lmtp-service.ems-shard0000.svc.cluster.local
 postfix-deliver.ems-router.svc.cluster.local
-imap-server.ems-shard%04d.svc.cluster.local
+imap-server.ems-shard0000.svc.cluster.local
 "
 
 
