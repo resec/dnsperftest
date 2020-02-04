@@ -41,6 +41,7 @@ for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
 #    printf "%-8s" "test$totaldomains"
 done
+printf "%-8s" "Count"
 printf "%-8s" "Max"
 printf "%-8s" "Min"
 printf "%-8s" "Average"
@@ -80,7 +81,10 @@ for p in $PROVIDERS; do
     totalcount=$((COUNTER * totaldomains))
     avg=`bc -lq <<< "scale=2; $ftime/$totalcount"`
 
-    echo "$max.00 $min.00 $avg (ms)"
+    printf "%-8s" "$totalcount"
+    printf "%-8s" "$max.00 ms"
+    printf "%-8s" "$min.00 ms"
+    printf "%-8s" "$avg ms"
 done
 
 
