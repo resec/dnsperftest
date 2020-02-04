@@ -55,25 +55,27 @@ for p in $PROVIDERS; do
     min=99999
 
     printf "%-18s" "$pname"
-    for d in $DOMAINS2TEST; do
-        ttime=`$dig +tries=1 +time=2 +stats @$pip $d |grep "Query time:" | cut -d : -f 2- | cut -d " " -f 2`
-        if [ -z "$ttime" ]; then
-	        #let's have time out be 1s = 1000ms
-	        ttime=1000
-        elif [ "x$ttime" = "x0" ]; then
-	        ttime=1
-	fi
-	
-	if (( ttime > max )); then
-		max=$ttime
-	fi
-	
-	if (( ttime < min )); then
-		min=$ttime
-	fi
-	
-        #printf "%-8s" "$ttime ms"
-        ftime=$((ftime + ttime))
+    for (( COUNTER=0; COUNTER<=100; COUNTER+=1 )); do
+	    for d in $DOMAINS2TEST; do
+		ttime=`$dig +tries=1 +time=2 +stats @$pip $d |grep "Query time:" | cut -d : -f 2- | cut -d " " -f 2`
+		if [ -z "$ttime" ]; then
+			#let's have time out be 1s = 1000ms
+			ttime=1000
+		elif [ "x$ttime" = "x0" ]; then
+			ttime=1
+		fi
+
+		if (( ttime > max )); then
+			max=$ttime
+		fi
+
+		if (( ttime < min )); then
+			min=$ttime
+		fi
+
+		#printf "%-8s" "$ttime ms"
+		ftime=$((ftime + ttime))
+	    done
     done
     avg=`bc -lq <<< "scale=2; $ftime/$totaldomains"`
 
