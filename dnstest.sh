@@ -8,24 +8,31 @@ command -v bc > /dev/null || { echo "bc was not found. Please install bc."; exit
 NAMESERVERS=`cat /etc/resolv.conf | grep ^nameserver | cut -d " " -f 2 | sed 's/\(.*\)/&#&/'`
 
 PROVIDERS="
-1.1.1.1#cloudflare 
-4.2.2.1#level3 
-8.8.8.8#google 
-9.9.9.9#quad9 
-80.80.80.80#freenom 
-208.67.222.123#opendns 
-199.85.126.20#norton 
-185.228.168.168#cleanbrowsing 
-77.88.8.7#yandex 
-176.103.130.132#adguard 
-156.154.70.3#neustar 
-8.26.56.26#comodo
 10.100.0.100#unbound
 10.100.0.10#coredns
 "
 
 # Domains to test. Duplicated domains are ok
-DOMAINS2TEST="www.google.com amazon.com facebook.com www.youtube.com www.reddit.com  wikipedia.org twitter.com gmail.com www.google.com whatsapp.com"
+DOMAINS2TEST="
+routing-service.ems-router.svc.cluster.local
+user-service.ems-shard%04d.svc.cluster.local
+message-service.ems-shard%04d.svc.cluster.local
+email-storage-service.ems-shard%04d.svc.cluster.local
+label-service.ems-shard%04d.svc.cluster.local
+transfer-service.ems-shard%04d.svc.cluster.local
+search-service.ems-shard%04d.svc.cluster.local
+spam-filter-service.ems-shard%04d.svc.cluster.local
+api-service.ems-shard%04d.svc.cluster.local
+category-service.ems-shard%04d.svc.cluster.local
+routing-service.ems-router.svc.cluster.local
+history-service.ems-shard%04d.svc.cluster.local
+filter-service.ems-shard%04d.svc.cluster.local
+index-service.ems-shard%04d.svc.cluster.local
+nginx-api-service.ems-router.svc.cluster.local
+lmtp-service.ems-shard%04d.svc.cluster.local
+postfix-deliver.ems-router.svc.cluster.local
+imap-server.ems-shard%04d.svc.cluster.local
+"
 
 
 totaldomains=0
@@ -38,7 +45,7 @@ printf "%-8s" "Average"
 echo ""
 
 
-for p in $NAMESERVERS $PROVIDERS; do
+for p in $PROVIDERS; do
     pip=${p%%#*}
     pname=${p##*#}
     ftime=0
