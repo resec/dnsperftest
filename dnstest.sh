@@ -41,14 +41,16 @@ for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
 #    printf "%-8s" "test$totaldomains"
 done
-#printf "%-8s" "Average"
-#echo ""
+printf "Max" "Min" "Average"
+echo ""
 
 
 for p in $PROVIDERS; do
     pip=${p%%#*}
     pname=${p##*#}
     ftime=0
+    max=0
+    min=99999
 
     printf "%-18s" "$pname"
     for d in $DOMAINS2TEST; do
@@ -58,14 +60,22 @@ for p in $PROVIDERS; do
 	        ttime=1000
         elif [ "x$ttime" = "x0" ]; then
 	        ttime=1
-	    fi
-
+	fi
+	
+	if (( ttime > max )); then
+		max=ttime
+	fi
+	
+	if (( ttime < min )); then
+		min=ttime
+	fi
+	
         #printf "%-8s" "$ttime ms"
         ftime=$((ftime + ttime))
     done
     avg=`bc -lq <<< "scale=2; $ftime/$totaldomains"`
 
-    echo "  $avg"
+    echo "$max $min $avg (ms)"
 done
 
 
