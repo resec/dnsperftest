@@ -82,9 +82,10 @@ for p in $PROVIDERS; do
     avg=`bc -lq <<< "scale=2; $ftime/$totalcount"`
 
     printf "%-8s" "$totalcount"
-    printf "%-8s" "$max.00 ms"
-    printf "%-8s" "$min.00 ms"
-    printf "%-8s" "$avg ms"
+    printf "%-8s" "$max.00"
+    printf "%-8s" "$min.00"
+    printf "%-8s" "$avg"
+    echo " ms"
 done
 
 
