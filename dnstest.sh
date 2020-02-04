@@ -45,6 +45,7 @@ printf "%-8s" "Count"
 printf "%-8s" "Max"
 printf "%-8s" "Min"
 printf "%-8s" "Average"
+printf "%-8s" "Total"
 echo ""
 
 
@@ -85,6 +86,7 @@ for p in $PROVIDERS; do
     printf "%-8s" "$max.00"
     printf "%-8s" "$min.00"
     printf "%-8s" "$avg"
+    printf "%-8s" "$ftime"
     echo " ms"
 done
 
