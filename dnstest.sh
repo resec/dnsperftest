@@ -34,9 +34,8 @@ postfix-deliver.ems-router.svc.cluster.local
 imap-server.ems-shard0000.svc.cluster.local
 "
 
-echo ""
 totaldomains=0
-printf "%-16s" ""
+printf "%-12s" ""
 for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
 #    printf "%-8s" "test$totaldomains"
@@ -56,7 +55,7 @@ for p in $PROVIDERS; do
     max=0
     min=99999
 
-    printf "%-18s" "$pname"
+    printf "%-12s" "$pname"
     for (( COUNTER=0; COUNTER<=100; COUNTER+=1 )); do
 	    for d in $DOMAINS2TEST; do
 		ttime=`$dig +tries=1 +time=2 +stats @$pip $d |grep "Query time:" | cut -d : -f 2- | cut -d " " -f 2`
