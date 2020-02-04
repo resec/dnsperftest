@@ -36,13 +36,13 @@ imap-server.ems-shard0000.svc.cluster.local
 
 
 totaldomains=0
-printf "%-18s" ""
+#printf "%-18s" ""
 for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
-    printf "%-8s" "test$totaldomains"
+#    printf "%-8s" "test$totaldomains"
 done
-printf "%-8s" "Average"
-echo ""
+#printf "%-8s" "Average"
+#echo ""
 
 
 for p in $PROVIDERS; do
