@@ -36,12 +36,14 @@ imap-server.ems-shard0000.svc.cluster.local
 
 
 totaldomains=0
-#printf "%-18s" ""
+printf "%-18s" ""
 for d in $DOMAINS2TEST; do
     totaldomains=$((totaldomains + 1))
 #    printf "%-8s" "test$totaldomains"
 done
-printf "Max Min Average"
+printf "%-8s" "Max"
+printf "%-8s" "Min"
+printf "%-8s" "Average"
 echo ""
 
 
@@ -75,7 +77,7 @@ for p in $PROVIDERS; do
     done
     avg=`bc -lq <<< "scale=2; $ftime/$totaldomains"`
 
-    echo "$max $min $avg (ms)"
+    echo "$max.00 $min.00 $avg (ms)"
 done
 
 
